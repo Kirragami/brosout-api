@@ -35,3 +35,66 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Spring Boot ###
+*.log
+logs/
+target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### Database ###
+*.db
+*.sqlite
+*.sqlite3
+*.h2.db
+*.h2.db.trace.db
+*.lock.db
+*.trace.db
+
+### Environment Variables ###
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+application-local.yml
+application-local.properties
+
+### OS Generated Files ###
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+### Temporary Files ###
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+### Maven ###
+.mvn/
+mvnw
+mvnw.cmd
+
+### Gradle ###
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+!gradle-wrapper.properties
+
+### Application Specific ###
+# Database connection logs
+db-connection.log
+# JWT tokens (if stored locally)
+jwt-tokens.txt
+# Local configuration overrides
+config/local/
+# Backup files
+*.bak
+*.backup

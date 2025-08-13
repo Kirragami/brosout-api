@@ -21,6 +21,9 @@ spring:
       hibernate:
         format_sql: false
 
+  flyway:
+    locations: classpath:db/migration
+
 jackson:
   serialization:
     indent-output: false

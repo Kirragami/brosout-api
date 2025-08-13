@@ -1,0 +1,19 @@
+# Ignore sensitive migration files that might contain real data
+# Keep only the structure and sample data migrations
+
+# Production data files (if any contain real user data)
+*_prod_data.sql
+*_real_users.sql
+*_production_seed.sql
+
+# Local development overrides
+local_*.sql
+override_*.sql
+
+# Backup files
+*.sql.bak
+*.sql.backup
+
+# Temporary files
+*.tmp
+*.temp 
