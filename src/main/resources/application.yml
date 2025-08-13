@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: brosout-api
+  profiles:
+    active: dev
+
+server:
+  port: 8080
+
+# Actuator : expose all endpoints (be careful in production)
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+application:
+  security:
+    jwt:
+      secret-key: "${JWT_SECRET:fJPA2vJxsYSQNpp2qFQnRQs6i0NYpdhBa/PkBufeKE0=}"
+      expiration: 900000            # 15 minutes in ms
+      refresh-token:
+        expiration: 604800000      # 7 days in ms
+
+# swagger (springdoc)
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: alpha
+    tagsSorter: alpha
+    doc-expansion: none
+    display-request-duration: true
+
+# Jackson : pretty-print
+jackson:
+  serialization:
+    indent_output: true
+
+logging:
+  level:
+    root: info
