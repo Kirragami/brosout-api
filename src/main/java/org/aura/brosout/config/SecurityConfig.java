@@ -30,7 +30,6 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.io.IOException;
-import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -39,6 +38,7 @@ import java.util.List;
 public class SecurityConfig {
 
     private final ObjectMapper objectMapper;
+    private final CorsProperties corsProperties;
 
     private static final String[] PUBLIC_MATCHERS = {
             "/api/v1/auth/**",
@@ -82,11 +82,11 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration cfg = new CorsConfiguration();
-        cfg.setAllowedOriginPatterns(List.of("*")); // for dev; replace with explicit origins in prod
-        cfg.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        cfg.setAllowedHeaders(List.of("*"));
-        cfg.setExposedHeaders(List.of("Authorization", "Content-Type"));
-        cfg.setAllowCredentials(true);
+        cfg.setAllowedOriginPatterns(corsProperties.getAllowedOriginPatterns());
+        cfg.setAllowedMethods(corsProperties.getAllowedMethods());
+        cfg.setAllowedHeaders(corsProperties.getAllowedHeaders());
+        cfg.setExposedHeaders(corsProperties.getExposedHeaders());
+        cfg.setAllowCredentials(corsProperties.isAllowCredentials());
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", cfg);
