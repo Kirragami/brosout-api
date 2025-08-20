@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.aura.brosout.common.responseWrapper.ApiResponse;
+import org.aura.brosout.common.responseWrapper.ResponseWrapper;
 import org.aura.brosout.utils.JwtUtilsService;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -82,7 +82,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding(StandardCharsets.UTF_8.name());
 
-        ApiResponse<?> payload = ApiResponse.error(message);
+        ResponseWrapper<?> payload = ResponseWrapper.error(message);
         objectMapper.writeValue(response.getWriter(), payload);
     }
 }

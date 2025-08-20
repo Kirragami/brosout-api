@@ -1,7 +1,7 @@
 -- Create users table
 CREATE TABLE IF NOT EXISTS users (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(100) NOT NULL UNIQUE,
+    username VARCHAR(100) NOT NULL,
     phone_number VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(200) NOT NULL,
     user_type ENUM('ADMIN','USER') NOT NULL DEFAULT 'USER',

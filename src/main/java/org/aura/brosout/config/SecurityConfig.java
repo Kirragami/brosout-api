@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.aura.brosout.common.responseWrapper.ApiResponse;
+import org.aura.brosout.common.responseWrapper.ResponseWrapper;
 import org.aura.brosout.crosscutting.filter.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -74,7 +74,7 @@ public class SecurityConfig {
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding("UTF-8");
-        ApiResponse<?> payload = ApiResponse.error("Unauthorized :" + exception.getMessage());
+        ResponseWrapper<?> payload = ResponseWrapper.error("Unauthorized :" + exception.getMessage());
 
         objectMapper.writeValue(response.getWriter(), payload);
     }
